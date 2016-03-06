@@ -1,0 +1,12 @@
+<div ng-controller="GalleryController" ng-class='galleryPage'>
+	<div ng-class='galleryContainer'>
+		<div ng-repeat="photo in photos">
+			<img src="{{photo.image}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="showPhoto($index); setIsVisibleToTrue();" />
+		</div>
+	</div>
+	<div ng-class="{ 'containerSliderVisible' : isVisible, 'containerSlider' : isVisible }" ng-mouseleave="setIsVisibleToFalse();">
+        <img ng-class="{ 'containerSlider' : isVisible==false }" ng-repeat="photo in photos" class="slide" ng-swipe-right="showPrev()" ng-swipe-left="showNext()" ng-show="isActive($index)" ng-src="{{photo.image}}" />
+	        <a ng-class="{ 'arrowVisible prev' : isVisible, 'arrow' : isVisible }" ng-click="showPrev()"></a>
+	        <a ng-class="{ 'arrowVisible nextImg' : isVisible, 'arrow' : isVisible }" ng-click="showNext()"></a>
+    </div>
+</div>

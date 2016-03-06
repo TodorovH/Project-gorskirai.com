@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Къща "Горски рай"</title>
+	<link rel="shortcut icon" href="../images/logo.jpg" type="image/type jpg"/>
+	<meta charset="utf-8" />
+	<meta name="keywords" content="горски рай, guesthouse, pochivka, troyan, cherni osam, holidays, vacation, rentals, къща за гости, почивка, ваканция, троян, балкан, стара планина, черни осъм, разходка, наем, свободни стаи, празници, почивни дни.">
+  	<meta name="description" content="Къща за гости Горски рай в село Черни Осъм.">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script src="lib/angular/angular.js"></script>
+</head>
+
+<body ng-app='ForestParadiseApp' ng-controller="MainController" ng-cloak onload="location.href = '#/';">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/bg_BG/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div ng-class='mainContainer'>
+	<header>
+		<div ng-class='nameContainer' onclick="location.href = '#/location';">
+			<div>Къща за гости</div>
+			<div ng-class='secondPartOfTheName' onclick="location.href = '#/location';">"Горски рай"</div> 
+		</div>
+		<img src="../images/headerPic.jpg">
+		<div ng-class='navbar'>
+			<ul>
+				<li onclick="location.href = '#/';">Начало</li>
+				<li onclick="location.href = '#/location';">Местоположение</li>
+				<li onclick="location.href = '#/extras';">Какво предлагаме</li>
+				<li onclick="location.href = '#/gallery';">Галерия</li>
+				<li onclick="location.href = '#/contacts';">За контакти</li>
+			</ul>
+		</div>
+	</header>
+	<div ng-view ng-class='viewsContainer'>
+		
+	</div>
+	<footer>
+		<div ng-class='footerTextContainer'>
+			© 2015  - Hristo Todorov. All Rights Reserved.
+		</div>
+		<div ng-class='fbLikeContainer'>
+			<p>Харесайте ни във Фейсбук.</p>
+			<div class="fb-page" data-href="https://www.facebook.com/pages/%D0%9A%D1%8A%D1%89%D0%B0-%D0%B7%D0%B0-%D0%B3%D0%BE%D1%81%D1%82%D0%B8-%D0%93%D0%BE%D1%80%D1%81%D0%BA%D0%B8-%D1%80%D0%B0%D0%B9/1397906650485583?fref=ts" data-width="500" data-height="300" data-hide-cover="true" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/pages/%D0%9A%D1%8A%D1%89%D0%B0-%D0%B7%D0%B0-%D0%B3%D0%BE%D1%81%D1%82%D0%B8-%D0%93%D0%BE%D1%80%D1%81%D0%BA%D0%B8-%D1%80%D0%B0%D0%B9/1397906650485583?fref=ts"><a href="https://www.facebook.com/pages/%D0%9A%D1%8A%D1%89%D0%B0-%D0%B7%D0%B0-%D0%B3%D0%BE%D1%81%D1%82%D0%B8-%D0%93%D0%BE%D1%80%D1%81%D0%BA%D0%B8-%D1%80%D0%B0%D0%B9/1397906650485583?fref=ts">Къща за гости &quot;Горски рай&quot;</a></blockquote></div></div>
+		</div>
+	</footer>
+</div>
+<script src="lib/angular/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/MainController.js"></script>
+<script src="js/controllers/HomeController.js"></script>
+<script src="js/controllers/LocationController.js"></script>
+<script src="js/controllers/ExtrasController.js"></script>
+<script src="js/controllers/GalleryController.js"></script>
+<script src="js/controllers/ContactsController.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+  	function initialize() {
+      	var myLatLng = new google.maps.LatLng(42.7789, 24.73925);
+        var mapCanvas = document.getElementById('map-canvas');
+        var mapOptions = {
+          center: myLatLng,
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.HYBRID
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        var image = {
+        	url: 'img/flag.png',
+        	size: new google.maps.Size(71, 71),
+        	origin: new google.maps.Point(0, 0),
+			anchor: new google.maps.Point(12, 40),
+			scaledSize: new google.maps.Size(25, 42)
+        };
+		var marker = new google.maps.Marker({
+		  position: myLatLng,
+		  map: map,
+		  icon: image,
+		  draggable: true
+	  	});
+  	}
+</script>
+</body>
+</html>
